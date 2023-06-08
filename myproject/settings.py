@@ -25,7 +25,7 @@ SECRET_KEY = 'h0z^7km9#o2w@eig&z9f-bso6tks@$q*ho#39o&l0z)aux_2t^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dev.getsentry.net', 'localhost']
+ALLOWED_HOSTS = ['dev.getsentry.net', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -46,10 +46,19 @@ import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
 sentry_sdk.init(
-    dsn="YOUR_DSN",
-    integrations=[DjangoIntegration()],
-    release=os.environ.get("VERSION"),
-    environment="Production"
+    dsn="https://625529a0c0aa4d9ebb85195feaf60f7b@o4505325424148480.ingest.sentry.io/4505326314651648",
+    integrations=[
+        DjangoIntegration(),
+    ],
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
 )
 
 MIDDLEWARE = [
