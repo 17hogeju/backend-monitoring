@@ -1,12 +1,13 @@
 from django.urls import path, include
 from rest_framework import routers, serializers, viewsets
-from sentry_sdk.tracing import start_transaction
+import sentry_sdk
 
 def trigger_error(request):
     division_by_zero = 1 / 0
 
+@sentry_sdk.configure_scope
 def trigger_error_2(request):
-    with start_transaction(op='test_operation', name='Test Operation') as transaction:
+    with sentry_sdk.start_span(op='test_operation', name='Test Operation'):
         division_by_zero = 1 / 0
 
 from .views import InventoreyView, HandledErrorView, UnHandledErrorView, CaptureMessageView
