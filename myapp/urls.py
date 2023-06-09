@@ -7,7 +7,7 @@ def trigger_error(request):
 
 @sentry_sdk.configure_scope
 def trigger_error_2(request):
-    with sentry_sdk.start_span(op='test_operation', name='Test Operation'):
+    with sentry_sdk.start_span(op='test_operation', description='Test Operation'):
         division_by_zero = 1 / 0
 
 from .views import InventoreyView, HandledErrorView, UnHandledErrorView, CaptureMessageView
