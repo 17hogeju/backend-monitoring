@@ -3,7 +3,7 @@ from rest_framework import routers, serializers, viewsets
 import sentry_sdk
 
 def trigger_error(request):
-    division_by_zero = 1 / 0
+    get_function()
 
 # @sentry_sdk.configure_scope
 # def trigger_error_2(request):
