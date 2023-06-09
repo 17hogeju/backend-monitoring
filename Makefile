@@ -1,7 +1,7 @@
 SENTRY_AUTH_TOKEN=415ea20e4c664f17a966ee1785749115d818142dc6884119a77992a509469852
 SENTRY_ORG=julia-test-org
 SENTRY_PROJECT=backend-monitoring
-VERSION=0.0
+VERSION=1
 
 deploy: install create_release associate_commits run_django
 
