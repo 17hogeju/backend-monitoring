@@ -17,6 +17,6 @@ urlpatterns = [
     path('unhandled', UnHandledErrorView.as_view()),
     path('message', CaptureMessageView.as_view()),
     path('sentry-debug/', trigger_error),
-    path('sentry-debug/', trigger_error_2),
+    path('sentry-debug-2/', trigger_error_2),
 
 ]
